@@ -807,3 +807,123 @@ body::after {
 .grid, .ambient, .blob, .bg-name {
   pointer-events: none !important;
 }
+
+/* ════════════════════════════════════════════════════════
+   FULL MOBILE RESPONSIVE FIX
+════════════════════════════════════════════════════════ */
+
+/* Hide cursor ring on touch devices */
+@media (hover: none) {
+  #cur-dot, #cur-ring { display: none !important; }
+}
+
+@media (max-width: 768px) {
+
+  /* ── NAV ────────────────────────────────────────────── */
+  .nav { padding: 16px 20px; }
+
+  /* ── HERO — stack columns vertically ───────────────── */
+  .hero {
+    grid-template-columns: 1fr !important;
+    padding: 28px 20px 24px !important;
+    min-height: unset !important;
+    gap: 36px;
+  }
+
+  /* Left column — remove right border, add bottom border */
+  .col-left {
+    padding-right: 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    gap: 22px;
+  }
+
+  /* Right column — remove left padding */
+  .col-right {
+    padding-left: 0 !important;
+    align-items: flex-start;
+  }
+
+  /* Portrait — full width, not cut off */
+  .portrait-wrap {
+    width: 100% !important;
+    max-width: 320px;
+    margin: 0 auto 24px !important;
+  }
+
+  /* Right body text — full width */
+  .right-body { width: 100% !important; }
+
+  /* Hide floating stat cards — they overflow on mobile */
+  .stat-card { display: none !important; }
+
+  /* Headline smaller */
+  .headline h1 { font-size: clamp(30px, 8vw, 44px); }
+
+  /* BG name — smaller so it doesn't overflow */
+  .bg-name { font-size: clamp(70px, 20vw, 130px); }
+
+  /* ── SECTIONS ────────────────────────────────────────── */
+  .section { padding: 56px 20px !important; }
+  .section-title { font-size: clamp(26px, 7vw, 36px); }
+
+  /* ── PROJECTS — single column ────────────────────────── */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .project-card.featured {
+    grid-column: 1 !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  /* ── SERVICES — single column ────────────────────────── */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  /* ── PROCESS — single column ─────────────────────────── */
+  .process-strip {
+    grid-template-columns: 1fr !important;
+  }
+  .process-step {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-step:last-child { border-bottom: none; }
+
+  /* ── CONTACT — stack ─────────────────────────────────── */
+  .contact-wrap {
+    grid-template-columns: 1fr !important;
+    gap: 32px;
+  }
+  .contact-form { padding: 24px 18px !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+
+  /* ── FOOTER — stack ──────────────────────────────────── */
+  .footer-bar {
+    flex-direction: column !important;
+    gap: 14px;
+    padding: 20px !important;
+    text-align: center;
+  }
+  .foot-socials {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+  .nav { padding: 14px 16px; }
+  .hero { padding: 20px 16px 20px !important; }
+  .section { padding: 44px 16px !important; }
+  .headline h1 { font-size: clamp(26px, 9vw, 36px); }
+  .stack { gap: 6px; }
+  .tech { font-size: 11px; padding: 4px 10px; }
+  .contact-form { padding: 18px 14px !important; }
+}
