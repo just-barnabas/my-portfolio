@@ -149,7 +149,7 @@ body::after {
 }
 .logo-text span { color: var(--green); }
 
-.nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 34px; list-style: none; position: static !important; }
 .nav-links a {
   font-size: 12.5px; font-weight: 500; color: var(--silver);
   text-decoration: none; letter-spacing: .07em; text-transform: uppercase; position: relative;
@@ -728,7 +728,7 @@ html { scroll-behavior: smooth; }
 
 /* ── HAMBURGER & CLOSE BTN ─────────────────────────────── */
 .hamburger {
-  display: none;
+  display: none !important;
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -757,39 +757,49 @@ html { scroll-behavior: smooth; }
 }
 
 @media (max-width: 768px) {
-  .hamburger { display: flex; }
-  .nav-links  { display: none; }
-  .nav-right  { display: none; }
+  /* Show hamburger, hide nav links and available text */
+  .hamburger { display: flex !important; }
+  .nav-links  { display: none !important; position: static !important; }
+  .nav-right  { display: none !important; }
 
+  /* Open state — full screen overlay */
   .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    inset: 0;
-    background: rgba(5,5,7,0.97);
-    backdrop-filter: blur(20px);
-    z-index: 99997;
-    align-items: center;
-    justify-content: center;
-    gap: 36px;
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 0 !important; left: 0 !important;
+    right: 0 !important; bottom: 0 !important;
+    width: 100vw !important; height: 100vh !important;
+    background: rgba(5,5,7,0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    z-index: 99997 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 36px !important;
+    margin: 0 !important; padding: 0 !important;
   }
+  .nav-links.open li { list-style: none; }
   .nav-links.open a {
-    font-size: 22px;
+    font-size: 24px !important;
     letter-spacing: .08em;
-    color: var(--white);
+    color: var(--white-pure) !important;
+    text-decoration: none;
   }
-  .nav-links.open .close-btn { display: flex; }
+  .nav-links.open .close-btn { display: flex !important; }
 }
 
 /* ── CLICK FIX — ensure all links & buttons are clickable ── */
 a, button, .proj-link, .btn-glow, .btn-ghost,
-.channel, .tech, .svc, .project-card,
-.service-card, .process-step, .nav-links a,
+.channel, .tech, .svc,
 .foot-socials a, .form-submit, .form-input,
 .form-textarea, .form-select, .hamburger, .close-btn {
   pointer-events: auto !important;
+}
+
+.project-card, .service-card, .process-step {
+  pointer-events: auto !important;
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
 
 /* Cursor elements must never block clicks */
